@@ -1,4 +1,4 @@
-# auto-installer
+# Runner
 Automate Installation of Programms on Windows Systems with Powershell
 
 ## Pyton Installer

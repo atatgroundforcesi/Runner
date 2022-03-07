@@ -1,4 +1,4 @@
-﻿#Author Simon Dürr
+#Author Simon Dürr
 #Date 07.01.2022
 #Version Beta 0.1
 

@@ -1,0 +1,7 @@
+<Runner>
+    <OwnList Value="False">
+        <OwnListUrl>https://my-repo.com¨/packages.xml</OwnListUrl> <!--Specify your URL from which Repository you want to install tagged Packages-->
+    </OwnList>
+</Runner>
+
+
