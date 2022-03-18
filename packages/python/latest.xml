@@ -7,9 +7,10 @@ Optionn 2: To run it unattend Set the Version Number in the Pyton Runner Script.
 
 <Runner>
 <!--Required-->
+    <packageName>Python</packageName>
     <Download>
-        <DonwloadUrl>https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe</DonwloadUrl>
-        <DownloadVersion>Python 3.10.0<DownloadVersion> <!--Download Version To Check Sucessful Installation-->
+        <DownloadUrl>https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe</DownloadUrl>
+        <DownloadVersion>Python 3.10.0</DownloadVersion> <!--Download Version To Check Sucessful Installation-->
     </Download>
     <InstallPython>
         <option>InstallAllUsers=1</option> <!--System wide Installation-->

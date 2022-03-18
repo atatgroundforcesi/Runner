@@ -1,4 +1,4 @@
-# auto-installer
+# Runner
 Automate Installation of Programms on Windows Systems with Powershell
 
 ## Pyton Installer
@@ -17,3 +17,14 @@ If you want you can add also install pip with this Installer too
 
 For Version 0.2 No Longer Configuration in Script will be needed.
 Configure your Installation with XML File. 
+
+### How To Use with XML in 4 Steps (Short) ?
+
+1. Execute Setup.1 Script as Adminstrator with Powershell
+
+2. Go To Package and Open XML File
+
+3. Change Your DownloadString, VersionNumber, InstallOptions as you like.
+
+4. Save XML and Execute Script python-runner.ps1
+
