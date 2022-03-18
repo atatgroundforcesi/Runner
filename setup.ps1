@@ -1,55 +1,60 @@
+#Author Simon Dürr
+#Date 16.03.2022
+#Version Beta 0.1
 
+#Override Variable!
+$RunnerSources = "$env:ProgramData\runner"
 
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# READ ISTRUCTIONS BEFORE EXECUTE SETUP.PS1
-#
-# Go to to setup.xml
-# Go to packages.xml
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#Introducing Runner
+Write-Host -ForegroundColor Blue @"
 
-#Load XML
-[xml]$Packages = Get-Content -Path "./xml-config/packages.xml"
-[xml]$Setup = Get-Content -Path "./xml-config/setup.xml"
+########  ##     ## ##    ## ##    ## ######## ########  
+##     ## ##     ## ###   ## ###   ## ##       ##     ## 
+##     ## ##     ## ####  ## ####  ## ##       ##     ## 
+########  ##     ## ## ## ## ## ## ## ######   ########  
+##   ##   ##     ## ##  #### ##  #### ##       ##   ##   
+##    ##  ##     ## ##   ### ##   ### ##       ##    ##  
+##     ##  #######  ##    ## ##    ## ######## ##     ##
 
+Welcome to Runner, a Tool to fullfill your Install wishes ;)
 
-#main
-Write-Host -ForegroundColor Green "Welcome to Runner :)"
-try{
-    Set-Runner
-}
-catch{
-    Write-Host -ForegroundColor Red "An Error Occured"
-}
-Set-Setup
+"@
+Write-Host "Following Debuging Options Are Available:"
+Write-Host -NoNewLine -ForegroundColor Cyan "(I): Information "
+Write-Host -NoNewLine -ForegroundColor Green "(S): Success "
+Write-Host -ForegroundColor Red "(E): Error "
 
+Set-Runner
 #This Block creates folder Structure of Runner at C:\ProgramData\runner
 function Set-Runner{
-    $Runner_Path = "$env:ProgramData\runner"
-    $Runner_Path_Subpaths = @('packages', 'sources','file-templates')
+    $Runner_Path = $RunnerSources #There will be soon Option for configuration of own Installation Path with XML
+    $Runner_Path_Subpaths = @('packages', '.sources','file-templates')
 
+    Write-Host -ForegroundColor Cyan "(I): Setting Up Runner ..."
+
+    #path exists ?
     If (-Not (Test-Path -Path $Runner_Path)){
-        New-Item -Path $Runner_Path -ItemType Directory
-
-        for ($i = 0;$i -lt $Runner_Path_Subpaths.Length; $i++){
-            New-Item -Name $Runner_Path_Subpaths[$i] -Path $Runner_Path -ItemType Directory
-        }
+        
+        New-Item -Path $Runner_Path -ItemType Directory -Verbose
+        Write-Host -ForegroundColor Green "(S): Path $Runner_Path created"
     }
-    else {
-        return "Path $Runner_Path already exists"
-    }
-}
-function Set-Setup{
-    If ($Setup.Runner.OwnList.Value -eq $false){
-
-        Write-Host -ForegroundColor Blue @"
-Default Package Libary is used. See Packages at ./xml-config/setup.xml
-To Use your Own Libary, Set <OwnList Value="True"> and
-paste your URL to Link an XML File https://my-repo.com/packages.xml
-"@
-    }
+    #debug msg
     else{
-        Write-Host "Alternative set"
+            Write-Host -ForegroundColor Cyan "(I): Path $Runner_Path already existing, Path not created"
+        }
+    
+    for ($p = 0; $p -lt $Runner_Path_Subpaths.Length; $p++){
+            New-Item  -Path $Runner_Path\$($Runner_Path_Subpaths[$p]) -ItemType Directory
+            Write-Host -ForegroundColor Green "(S): $Runner_Path\$($Runner_Path_Subpaths[$p]) - created"
+    
     }
+    Write-Host -ForegroundColor Cyan "(I): Successfully Installed, Runner will be closed now"
+    Exit-PSSession
 }
-
-
+#Errorhandling
+function Debug-UndefinedError{
+    Write-Host -ForegroundColor Red @"
+(E): An undefined Error Occured!
+If Error can't resolved, open Issue https://github.com/simonduerr-coder/Runner/issues/new
+"@
+}
