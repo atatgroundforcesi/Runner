@@ -2,6 +2,8 @@
 #Date 16.03.2022
 #Version Beta 0.1
 
+#To Test Changes on This Script Use Whatif Command from Powershell :)
+
 #Override Variable!
 $RunnerSources = "$env:ProgramData\runner"
 

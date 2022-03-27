@@ -2,23 +2,16 @@
 Automate Installation of Programms on Windows Systems with Powershell
 
 ## Pyton Installer
-### Version 0.1
-Install your Python Environment with Powershell python_runner.ps1
-If you want you can add also install pip with this Installer too
 
-- Open your Editor to modify the Script
-> change variables if needed
-- Save and Exceute
-> Maybe Powershell Exceution Policy is not Administrator Script will Failing.
-> Be sure to execute it as administrator
+### Version Beta
 
-### Version 0.2
-> In Progress, not availbale right now
+No Longer Configuration in Script will be needed.
+Configure your Installation with XML File.
 
-For Version 0.2 No Longer Configuration in Script will be needed.
-Configure your Installation with XML File. 
+Beta Version is Recommended for Using it Temporary. No Changes at the
+Environment of the System will be made.
 
-### How To Use with XML in 4 Steps (Short) ?
+### How To Use with Beta in 4 Steps (Short) ?
 
 1. Execute Setup.1 Script as Adminstrator with Powershell
 
@@ -28,3 +21,14 @@ Configure your Installation with XML File.
 
 4. Save XML and Execute Script python-runner.ps1
 
+### Version Alpha
+
+Version Alpha is in Progress. Goal of Version Alpha is to create a executable Commandline Tool for Administration,
+written in C++.
+
+
+## Developer Mode
+> How Can i Add a New Feature ?
+
+To add a new Feature First set a New XML Tag at Additional. Second Create your Own PowerShell Function to Process your own
+written XML Tag
