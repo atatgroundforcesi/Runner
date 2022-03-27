@@ -8,7 +8,7 @@ $global:RunnerSources = "$env:ProgramData\runner"
 #Folders and Filenames, could be overwritten
 $global:packageFolder = "packages"
 $global:XmlTemplate = "latest" #name of the XML file
-$global:PackageName = "python" #pathname
+$global:PackageName = "docker" #pathname
 
 #Main
 New-Package #tag f1
@@ -114,12 +114,9 @@ function Install-Package{
 function Install-PackageAddOns{
     [xml]$XMLFile = Get-Content -Path "$RunnerSources\packages\$PackageName\$XmlTemplate.xml" -Verbose
     $XMLFile_InstallAddOns = $XMLFile.Runner.InstallAddOns.Value
-    $XMLFile_InstallAddOnsPackages = $XMLFile.Runner.Packages.Name
     #First Check if Pip Installer is installed
     try{
-        cmd.exe /c "python -m pip install  $XMLFile_InstallAddOns" 
-
-        cmd.exe /c "python -m pip install $XMLFile_InstallAddOnsPackages"
+        cmd.exe /c "python -m pip install  $XMLFile_InstallAddOns"
     }
     catch{
       Debug-InstallationError

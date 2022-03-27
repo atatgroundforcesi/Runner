@@ -2,6 +2,18 @@
 Automate Installation of Programms on Windows Systems with Powershell
 
 ## Pyton Installer
+Automate Python Installation with Additional Params
+
+|Param                  |Meaning                                                 |no|yes                   |
+|-----------------------|--------------------------------------------------------|--|----------------------|
+|InstallAllUsers=       | System Wide Installation                               |0 |1                     |
+|PrependPath=           | Add Path to Environment                                |0 |1                     |
+|Include_pip=           | Include Pip Package Manager                            |0 |1                     |
+|include_test=          | Install Python Documentary                             |0 |1                     |
+
+## Docker Installer
+
+Not Testetd Yet
 
 ### Version Beta
 
@@ -20,12 +32,6 @@ Environment of the System will be made.
 3. Change Your DownloadString, VersionNumber, InstallOptions as you like.
 
 4. Save XML and Execute Script python-runner.ps1
-
-### Version Alpha
-
-Version Alpha is in Progress. Goal of Version Alpha is to create a executable Commandline Tool for Administration,
-written in C++.
-
 
 ## Developer Mode
 > How Can i Add a New Feature ?

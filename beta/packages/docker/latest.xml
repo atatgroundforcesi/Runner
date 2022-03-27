@@ -1,0 +1,32 @@
+<!-- Important Notes:
+YAML is not ready for Powershell yet. So instead we use XML to Config :)
+If you have different Python settings copy this File and Rename Version. Default set is latest
+Option 1: To run it unattend Set the Version Number in the Pyton Runner Script. ex. v1_python_runner.xml-->
+
+<Runner>
+<!--Required-->
+    <packageName>Python</packageName>
+<!--Download-->
+    <Download>
+        <DownloadUrl>https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe</DownloadUrl>
+        <DownloadVersion>Python 3.10.0</DownloadVersion> <!--Download Version To Check Sucessful Installation-->
+    </Download>
+<!--Installation Specific for Every Package-->
+    <InstallFile>
+        <Option>InstallAllUsers=1</Option> <!--System wide Installation-->
+        <Option>PrependPath=1</Option> <!-- add PATH to Environment-->
+        <Option>include_pip=1</Option> <!--add Pip Package Manager-->
+        <Option>include_test=1</Option> <!--Install Python Documentary-->
+    </InstallFile>
+<!--Additional Installation Patterns-->
+    <InstallAddOns>
+        <Value>virtualenv</Value> <!--activate Virtualenv-->
+        <Value>--upgrade pip</Value>
+    </InstallAddOns>
+<!--Python Specific-->
+    <Packages>
+    <Name>matplotlib</Name>
+    <Name>pandas</Name>
+    </Packages>
+
+</Runner>
